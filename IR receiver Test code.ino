@@ -2,18 +2,21 @@
 
 #define IR_RECEIVE_PIN 16
 #define IR_SEND_PIN 36
-//IRsend irsend(IR_SEND_PIN);
 
 void setup() {
   Serial.begin(9600);
   IrReceiver.begin(IR_RECEIVE_PIN);
+  IrSender.begin(IR_SEND_PIN);
 }
 
 void loop() {
+  //Example code to print out received codes information
   if (IrReceiver.decode()) {
     IrReceiver.printIRResultShort(&Serial);
+    IrReceiver.printIRSendUsage(&Serial);
     IrReceiver.resume();
   }
-  //irsend.sendRC5(0x3E, 13);
-  //delay(2000);
+  // Example Call to send data
+  IrSender.sendRC5(0xE,0x3E,2);
+  delay(2000);
 }
