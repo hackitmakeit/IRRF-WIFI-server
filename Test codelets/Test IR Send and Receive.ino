@@ -1,7 +1,7 @@
 #include <IRremote.h>
 
-#define IR_RECEIVE_PIN 16
-#define IR_SEND_PIN 36
+#define IR_RECEIVE_PIN 6
+#define IR_SEND_PIN 7
 
 void setup() {
   Serial.begin(9600);
